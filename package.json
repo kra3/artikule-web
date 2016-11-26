@@ -2,21 +2,17 @@
   "name": "artikule-web",
   "version": "1.0.1",
   "description": "Artikule WebApp",
-  "keywords": [
-    "react",
-    "starterkit",
-    "frontend",
-    "boilerplate",
-    "reflux",
-    "react-router"
-  ],
+  "author": "@kra3 <me@kra3.in>",
+  "license": "BSD-3-Clause",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/kra3/artikule-web.git"
+  },
   "main": "index.html",
   "scripts": {
     "start": "gulp clean && gulp",
     "test": "jest"
   },
-  "author": "@kra3 <me@kra3.in>",
-  "license": "BSD",
   "devDependencies": {
     "babel-core": "^6.1.2",
     "babel-jest": "^5.3.0",
