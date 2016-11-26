@@ -4,9 +4,9 @@
   "description": "Artikule WebApp",
   "author": "@kra3 <me@kra3.in>",
   "license": "BSD-3-Clause",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/kra3/artikule-web.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kra3/artikule-web.git"
   },
   "main": "index.html",
   "scripts": {

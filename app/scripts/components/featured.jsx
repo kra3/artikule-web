@@ -8,7 +8,7 @@ const Featured = (props) => {
         <header>
           <h2>Top Ten</h2>
           <div>
-            <span className="publsished_on">November 11, 2016</span>
+            <span className="publsished_on">November 11, 2016</span> | &nbsp;
             <span className="author">The One</span>
           </div>
         </header>
