@@ -43,7 +43,8 @@
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1",
-    "reflux": "^0.4.1"
+    "reflux": "^0.4.1",
+    "superagent": "^3.0.0"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
