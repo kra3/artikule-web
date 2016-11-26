@@ -1,5 +1,7 @@
-@import 'normalize'
-@import 'helper'
+@import 'http://yui.yahooapis.com/pure/0.6.0/pure-min.css'
+@import 'http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css'
+// @import 'normalize'
+// @import 'helper'
 
 /* variables */
 $lightgrey = #999
@@ -12,7 +14,7 @@ html
 button
 input
 select
-textarea 
+textarea
   color: $black
 
 a
@@ -22,28 +24,28 @@ a:visited
 
 a:hover
   color: lighten($linkColor,10%)
-  
+
 body
   color: $black
   font-size: 1em
   line-height: 1.5
-  
+
 header
   background: $grey
   color:$black
   padding: 1em
-  
+
   nav
     float:right
     user-select:none
-    
+
   .nav-item
     float:left
     margin-left:.5em
-    
+
     a.active
       text-decoration:underline
-    
+
 .content
   padding: 1em
 
