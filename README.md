@@ -1,16 +1,22 @@
-Pure CSS Layout Examples
-========================
+Webapp to interface articule-server project
 
-Layout examples using [Pure CSS][pure] compiled from the [pure-site][] project.
+Uses ReactJS, react-router, reflux, gulp, webpack and node with babel
 
-[pure]: http://purecss.io/
-[pure-site]: https://github.com/yahoo/pure-site
+If you don't have nodeJS already, please [install node and npm](https://docs.npmjs.com/getting-started/installing-node) first.
 
 
-License
--------
+# To bootstrap and start dev server:
 
-This software is free to use under the Yahoo! Inc. BSD license.
-See the [LICENSE file][] for license text and copyright information.
+```
+npm install
+npm start
+```
 
-[LICENSE file]: https://github.com/yahoo/pure-site/blob/master/LICENSE.md
+# To build for production:
+
+```
+npm build --type production
+```
+
+
+
