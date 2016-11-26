@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../components/header.jsx'
-import Footer from '../components/footer.jsx'
 import Navigation from '../components/navigation.jsx'
 
 const App = (props) => {

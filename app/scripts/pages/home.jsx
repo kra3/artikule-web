@@ -1,10 +1,13 @@
 import React from 'react';
 import ItemList from '../components/itemList.jsx';
+import Featured from '../components/featured.jsx';
+import LatestArticles from '../components/articles.jsx';
+import Suggestions from '../components/suggestions.jsx';
 import ItemStore from '../stores/itemStore';
 import ItemActions from '../actions/itemActions';
 
 class Home extends React.Component {
-  
+
   constructor(props){
     super(props);
     this.state = {
@@ -29,8 +32,9 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home Area</h1>
-        <ItemList { ...this.state } />
+        <Featured />
+        <LatestArticles />
+        <Suggestions />
       </div>
     );
   }

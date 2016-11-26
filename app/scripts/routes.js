@@ -1,9 +1,9 @@
 import React from 'react';
-import { Router, Route, IndexRoute, browserHistory} from 'react-router';
+import { Router, Route, IndexRoute, hashHistory} from 'react-router';
 
 import App from './pages/app.jsx';
 import Home from './pages/home.jsx';
-import Info from './pages/info.jsx';
+import Article from './pages/article.jsx';
 import NotFound from './pages/notFound.jsx';
 
 const historyOptions = {
@@ -11,12 +11,12 @@ const historyOptions = {
 };
 
 const routes = (
-  <Router history={browserHistory}>
+  <Router history={hashHistory}>
     <Route path='/' component={ App }>
-      <IndexRoute component={ Home }/>
-      <Route path='info' component={ Info } />
+      <IndexRoute component={ Home } />
       <Route path='home' component={ Home } />
-      <Route path='*' component={NotFound}/>
+      <Route path='article/:articleId' component={ Article } />
+      <Route path='*' component={NotFound} />
     </Route>
   </Router>
 );

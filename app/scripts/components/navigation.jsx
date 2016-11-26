@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 let buildNavItems = (times) => [...Array(times)].map((num, i) =>
   <li className="pure-menu-item" key={i+1}>
-    <Link className="pure-menu-link" to="home">
+    <Link className="pure-menu-link" to="article/1">
       <img src="images/nav.png" className="pure-img" />
       <span>Nav {i + 1}</span>
     </Link>
