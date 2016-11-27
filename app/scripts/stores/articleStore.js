@@ -83,10 +83,34 @@ let ArticleStore = Reflux.createStore({
   },
 
   loadArticle(articleId){
+    const article = this.articles[articleId];
     this.trigger({
-      article: this.articles[articleId]
+      article: article,
+      loadingArticle: !article
     })
-  }
+  },
+
+  loadArticleAsync() {
+    this.trigger({
+      loadingArticle: true
+    });
+  },
+
+  loadArticleAsyncCompleted(article) {
+    this.articles[article.pk] = article;
+
+    this.trigger({
+      article: article,
+      loadingArticle: false
+    });
+  },
+
+  loadArticleAsyncFailed(error) {
+    this.trigger({
+      error : error,
+      loadingArticle: false
+    });
+  },
 });
 
 export default ArticleStore;

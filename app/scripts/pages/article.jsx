@@ -9,6 +9,7 @@ class Article extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      loadingArticle: false,
       article: {},
       loadingSuggestions: false,
       suggestions : [],
@@ -26,7 +27,7 @@ class Article extends React.Component {
   componentWillReceiveProps(nextProps) {
     const {params} = nextProps;
     if(params.articleID !== this.props.params.articleID){
-      ArticleActions.loadArticle(this.props.params.articleID);
+      ArticleActions.loadArticle(params.articleID);
       ArticleActions.loadSuggestions();
     }
   }
@@ -36,13 +37,21 @@ class Article extends React.Component {
   }
 
   onStatusChange(state) {
+    if(state.hasOwnProperty('article')){
+      if(state.article === undefined){
+        state.article = {};
+        ArticleActions.loadArticleAsync(this.props.params.articleID);
+      }
+    }
     this.setState(state);
   }
 
   render() {
     return (
       <div>
-        <Post article={this.state.article} />
+        <Post
+          loading={this.state.loadingArticle}
+          article={this.state.article} />
         <Suggestions
           loading={this.state.loadingSuggestions}
           suggestions={this.state.suggestions}

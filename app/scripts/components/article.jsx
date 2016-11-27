@@ -6,31 +6,36 @@ let newLineToParagraph = text => text?
   []
 
 const Post = (props) => {
-  const {article} = props;
+  const {loading, article} = props;
   const paras = newLineToParagraph(article.content);
 
-  return (
-    <section id="post">
-      <article>
-        <header>
-          <h2>{article.title}</h2>
-          <div>
-            <span className="publsished_on">{article.publication_date}</span> | &nbsp;
-            <span className="author">{article.author}</span>
-          </div>
-        </header>
-          <img src={article.hero_image} className="pure-img" />
-          <section>
-            {paras.slice(0, 2)}
-            {article.opt_image && <img src={article.opt_image} className="pure-img" />}
-            {paras.slice(2)}
-          </section>
-      </article>
-    </section>
-  )
+  if(!loading){
+    return (
+      <section id="post">
+        <article>
+          <header>
+            <h2>{article.title}</h2>
+            <div>
+              <span className="publsished_on">{article.publication_date}</span> | &nbsp;
+              <span className="author">{article.author}</span>
+            </div>
+          </header>
+            <img src={article.hero_image} className="pure-img" />
+            <section>
+              {paras.slice(0, 2)}
+              {article.opt_image && <img src={article.opt_image} className="pure-img" />}
+              {paras.slice(2)}
+            </section>
+        </article>
+      </section>
+    )
+  } else {
+    return(<i className="fa fa-spinner" />)
+  }
 };
 
 Post.propTypes = {
+  loading : React.PropTypes.bool,
   article : React.PropTypes.object
 }
 
