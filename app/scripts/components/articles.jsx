@@ -1,26 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-let buildArticleList = (times) => [...Array(3)].map((num, i) =>
-  <article key={i + 1}>
+let buildArticleList = articles => Object.values(articles).map((article, i) =>
+  <article key={article.pk}>
     <span>{i + 1}</span>
     <header>
-      <h2>Article title {i + 1}</h2>
+      <h2>{article.title}</h2>
     </header>
-    <section className="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-    consequat. Duis aute irure dolor.</section>
-    <Link to="home">read more ...</Link>
+    <section className="summary">{article.content.slice(0, 251)}</section>
+    <Link to={'/article/' + article.pk}>read more ...</Link>
   </article>
 )
 
 const LatestArticles = (props) => {
-  return (
-    <section id="latest">
-      {buildArticleList()}
-    </section>
-  )
+  const {loading, articles} = props;
+
+  if(!loading){
+    return (
+      <section id="latest">
+        {buildArticleList(articles)}
+      </section>
+    )
+  } else {
+    return(<i className="fa fa-spinner" />)
+  }
 };
+
+LatestArticles.propTypes = {
+  loading : React.PropTypes.bool,
+  articles : React.PropTypes.object
+}
 
 export default LatestArticles;

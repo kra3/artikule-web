@@ -1,29 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router';
 
+let newLineToParagraph = text => text?
+  text.replace('\r\n', '\n') .split('\n').map((block, i) => <p key={i}>{block}</p>):
+  []
+
 const Featured = (props) => {
-  return (
-    <section id="featured">
-      <article>
-        <header>
-          <h2>Top Ten</h2>
-          <div>
-            <span className="publsished_on">November 11, 2016</span> | &nbsp;
-            <span className="author">The One</span>
-          </div>
-        </header>
-          <img src="images/logo.png" className="pure-img" />
-          <section className="summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            <Link to="home">read more ...</Link>
-          </section>
-      </article>
-    </section>
-  )
+  const {loading, article} = props;
+
+  if(!loading){
+    return (
+      <section id="featured">
+        <article>
+          <header>
+            <h2>{article.title}</h2>
+            <div>
+              <span className="publsished_on">{article.publication_date}</span> | &nbsp;
+              <span className="author">{article.author}</span>
+            </div>
+          </header>
+            <img src={article.hero_image} className="pure-img" />
+            <section className="summary">
+              {newLineToParagraph(article.content).slice(0, 3)}
+            </section>
+            <Link to={'/article/' + article.pk}>read more ...</Link>
+        </article>
+      </section>
+    )
+  } else {
+    return(<i className="fa fa-spinner" />)
+  }
 };
+
+Featured.propTypes = {
+  loading : React.PropTypes.bool,
+  article : React.PropTypes.object
+}
 
 export default Featured;

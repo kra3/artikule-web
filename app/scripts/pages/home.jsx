@@ -10,9 +10,11 @@ class Home extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      loading: false,
+      loadingFeatured: false,
+      loadingSuggestions: false,
+      loadingArticles: false,
       featured : {},
-      articles: [],
+      articles: {},
       suggestions : [],
       page_number: 1,
       total_pages: 1
@@ -21,7 +23,9 @@ class Home extends React.Component {
 
   componentDidMount() {
     this.unsubscribe = ArticleStore.listen(this.onStatusChange.bind(this));
-    ArticleActions.loadItems();
+    ArticleActions.loadFeatured();
+    ArticleActions.loadSuggestions();
+    ArticleActions.loadArticles();
   }
 
   componentWillUnmount() {
@@ -35,9 +39,19 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <Featured />
-        <LatestArticles />
-        <Suggestions />
+        <Featured
+          loading={this.state.loadingFeatured}
+          article={this.state.featured} />
+        <LatestArticles
+          loading={this.state.loadingArticles}
+          articles={this.state.articles} />
+        <Suggestions
+          loading={this.state.loadingSuggestions}
+          suggestions={this.state.suggestions}
+          page_number={this.state.page_number}
+          total_pages={this.state.total_pages}
+          onPrev={(page_number) => ArticleActions.loadSuggestions(page_number - 1)}
+          onNext={(page_number) => ArticleActions.loadSuggestions(page_number + 1)} />
       </div>
     );
   }

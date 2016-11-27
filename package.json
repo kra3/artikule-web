@@ -11,6 +11,7 @@
   "main": "index.html",
   "scripts": {
     "start": "gulp clean && gulp",
+    "build": "gulp build",
     "test": "jest"
   },
   "devDependencies": {

@@ -10,7 +10,7 @@ let ArticleStore = Reflux.createStore({
 
   loadFeatured() {
     this.trigger({
-      loading: true
+      loadingFeatured: true
     });
   },
 
@@ -19,20 +19,20 @@ let ArticleStore = Reflux.createStore({
 
     this.trigger({
       featured : article,
-      loading: false
+      loadingFeatured: false
     });
   },
 
   loadFeaturedFailed(error) {
     this.trigger({
       error : error,
-      loading: false
+      loadingFeatured: false
     });
   },
 
   loadSuggestions() {
     this.trigger({
-      loading: true
+      loadingSuggestions: true
     });
   },
 
@@ -47,20 +47,20 @@ let ArticleStore = Reflux.createStore({
       suggestions : articles,
       page_number: page_number,
       total_pages: total_pages,
-      loading: false
+      loadingSuggestions: false
     });
   },
 
   loadSuggestionsFailed(error) {
     this.trigger({
       error : error,
-      loading: false
+      loadingSuggestions: false
     });
   },
 
   loadArticles() {
     this.trigger({
-      loading: true
+      loadingArticles: true
     });
   },
 
@@ -71,14 +71,14 @@ let ArticleStore = Reflux.createStore({
 
     this.trigger({
       articles: this.articles,
-      loading: false
+      loadingArticles: false
     });
   },
 
   loadArticlesFailed(error) {
     this.trigger({
       error : error,
-      loading: false
+      loadingArticles: false
     });
   },
 

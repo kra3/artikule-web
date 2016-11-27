@@ -11,7 +11,7 @@ const ItemList = (props) => {
           {items}
         </ul>
       </div>
-    );                               
+    );
 };
 
 ItemList.propTypes = {
