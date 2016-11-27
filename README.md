@@ -15,7 +15,7 @@ npm start
 # To build for production:
 
 ```
-npm build --type production
+npm build_prod
 ```
 
 
